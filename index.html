@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#090d18" />
+  <meta name="description" content="ECHOBOUND: a tactical card duel where every play returns as an echo. Play free against AI or in local two-player mode." />
+  <title>ECHOBOUND — Every move leaves an echo</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand-wrap"><div class="brand-mark" aria-hidden="true"><span>◈</span></div><div class="brand-text"><span class="brand-name">ECHO<span>BOUND</span></span><span class="brand-subtitle">EVERY MOVE LEAVES AN ECHO</span></div></div>
+      <div class="round-display" aria-live="polite"><div class="round-eyebrow">THE CONTEST</div><div class="round-main">ROUND <strong id="roundLabel">01</strong> <span>/ 08</span></div><div class="round-dots" id="roundDots" aria-hidden="true"></div></div>
+      <div class="header-actions">
+        <label class="header-field"><span>MODE</span><select id="modeSelect"><option value="ai">VS. AI</option><option value="local">2 PLAYERS</option></select></label>
+        <label class="header-field difficulty-field"><span>RIVAL</span><select id="difficultySelect"><option value="tactician">TACTICIAN</option><option value="casual">CASUAL</option></select></label>
+        <button class="text-button" id="rulesBtn" type="button">HOW TO PLAY</button>
+        <button class="icon-button" id="newGameBtn" type="button" title="New match" aria-label="New match">↻</button>
+      </div>
+    </header>
+    <main class="arena">
+      <section class="matchbar" aria-label="Match scores">
+        <div class="combatant combatant-you"><div class="combatant-avatar">I</div><div class="combatant-info"><div class="combatant-title" id="firstPlayerName">YOU <span class="combatant-level" id="rankLabel">INITIATE</span></div><div class="combatant-subtitle">VAULTS CONTROLLED <span id="firstCrowns">0</span> <span class="slash">/ 3</span></div></div><div class="combatant-total" id="firstPower">0<span>POWER</span></div></div>
+        <div class="turn-hint"><span class="turn-orbit">✧</span><div class="hint-primary" id="hintPrimary">CHOOSE YOUR NEXT MOVE</div><div class="hint-secondary" id="hintSecondary">Select a card, then a vault. The rival is already planning.</div></div>
+        <div class="combatant combatant-rival"><div class="combatant-total" id="secondPower">0<span>POWER</span></div><div class="combatant-info"><div class="combatant-title" id="secondPlayerName">THE RIVAL <span class="combatant-level">AI</span></div><div class="combatant-subtitle">VAULTS CONTROLLED <span id="secondCrowns">0</span> <span class="slash">/ 3</span></div></div><div class="combatant-avatar">II</div></div>
+      </section>
+      <section class="vault-grid" id="vaultGrid" aria-label="Choose a vault"></section>
+      <section class="last-event" id="lastEvent" aria-live="polite"><span class="event-glyph">✧</span><span>The table is yours. Every card casts an echo the following round.</span></section>
+    </main>
+    <section class="hand-tray" aria-label="Your cards">
+      <div class="hand-information"><div><div class="hand-eyebrow" id="handEyebrow">YOUR HAND · 4 CARDS</div><div class="hand-description" id="handDescription">Match the card's symbol to a vault for <strong>+2 power.</strong></div></div><div class="hand-count" id="handCount">01 <span>/ 08 ROUNDS</span></div></div>
+      <div class="hand-content"><div class="hand-cards" id="handCards"></div><aside class="move-panel"><div class="mode-heading">YOUR PLAY</div><div class="stance-switch" role="group" aria-label="Choose card stance"><button id="castBtn" class="stance active" aria-pressed="true" type="button"><span>CAST</span><small>Full power</small></button><button id="chargeBtn" class="stance" aria-pressed="false" type="button"><span>CHARGE</span><small>+2 echo</small></button></div><div class="selection-preview" id="selectionPreview">Select a card and vault to preview your move.</div><button class="commit-button" id="commitBtn" disabled type="button"><span>REVEAL ROUND</span><span class="arrow">↗</span></button></aside></div>
+    </section>
+    <footer class="app-footer"><span>© ECHOBOUND · FIRST PLAYABLE BUILD</span><span id="footerStats">0 WINS · 0 MATCHES</span><span>NO ACCOUNT REQUIRED · PLAY FREE</span></footer>
+  </div>
+  <div class="modal-layer hidden" id="modalLayer" role="presentation"><div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Game details"></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="core.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
