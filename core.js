@@ -11,9 +11,9 @@
     { key: 'veil', name: 'Veil', glyph: '✧', color: '#c4a2fd' }
   ];
   const VAULTS = [
-    { key: 'ember', name: 'The Crucible', caption: 'EMBER VAULT', glyph: '✦', color: '#f3b66a' },
-    { key: 'tide', name: 'The Undertow', caption: 'TIDE VAULT', glyph: '◈', color: '#6cd5e8' },
-    { key: 'veil', name: 'The Between', caption: 'VEIL VAULT', glyph: '✧', color: '#c4a2fd' }
+    { key: 'ember', name: 'Ember Vault', caption: 'EMBER VAULT', glyph: '✦', color: '#f3b66a' },
+    { key: 'tide', name: 'Tide Vault', caption: 'TIDE VAULT', glyph: '◈', color: '#6cd5e8' },
+    { key: 'veil', name: 'Veil Vault', caption: 'VEIL VAULT', glyph: '✧', color: '#c4a2fd' }
   ];
   const ROUNDS = 8;
   const STARTING_HAND = 4;

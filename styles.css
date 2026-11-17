@@ -15,3 +15,18 @@
 /* Keep both AI difficulty levels accessible even on narrow phones. */
 @media(max-width:720px){.brand-mark{display:none}.header-actions{gap:3px}.header-field select{max-width:86px;font-size:8px;padding:7px 16px 7px 5px;letter-spacing:0}.difficulty-field{display:flex}.text-button,.icon-button{width:28px}}
 @media(max-width:420px){.header-field select{max-width:78px}.brand-name{font-size:15px}.brand-subtitle{font-size:6px}}
+
+/* Clear first-time onboarding and plain-language scoring. */
+.quick-guide{display:flex;align-items:center;gap:12px;border:1px solid #426275;border-radius:11px;background:linear-gradient(95deg,#142e3e,#152031);padding:10px 13px;color:#d8e9f2;line-height:1.35;font-size:12px}
+.quick-guide strong{flex:none;color:#a8e6f3;font:800 12px 'Space Grotesk',system-ui,sans-serif;letter-spacing:.03em}
+.quick-guide span{flex:1;min-width:0}.quick-guide b{color:#fff}
+.quick-guide button{flex:none;border-radius:7px;border:1px solid #789aaf;color:#def3fc;background:#263f52;padding:8px 10px;font-size:10px;font-weight:800}
+.quick-guide button:hover{background:#365b72}
+.worked-example{margin:13px 0;background:#132e3c;border:1px solid #527d89;border-radius:12px;padding:13px}
+.example-title{font:800 12px 'Space Grotesk',system-ui,sans-serif;color:#b6e9fb;margin-bottom:10px}
+.worked-example p{color:#dbe9f1;font-size:13px;margin:7px 0}.worked-example strong{color:#94e0ec}.worked-example b{color:#fff}
+.simple-steps{display:grid;gap:4px;padding:2px 0}.simple-steps p{margin:3px 0;font-size:13px;color:#d3dfed}.simple-steps .advanced-note{font-size:11px;color:#93a5bb;margin-top:8px}
+.after-round-tip{border:1px solid #456978;border-radius:9px;background:#162b39;color:#d0e6ef;padding:10px 12px;font-size:12px;line-height:1.45}
+.selection-preview{line-height:1.5}.selection-preview strong{color:#b8e9f4}
+@media(max-width:880px){.quick-guide{flex-wrap:wrap;gap:7px}.quick-guide span{flex-basis:65%}.quick-guide button{margin-left:auto}}
+@media(max-width:720px){.quick-guide{font-size:10px;padding:8px}.quick-guide strong{font-size:10px}.quick-guide button{font-size:9px;padding:5px 7px}.selection-preview{font-size:10px}}

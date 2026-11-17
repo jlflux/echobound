@@ -53,3 +53,7 @@ Implemented: offline vs AI (two difficulty modes), local 2-player mode, interact
 Not implemented: remote real-time matchmaking, user accounts, cloud save, progression across devices, ranked ladder, spectating, card collection/deckbuilding, online leaderboards. Those would require a backend and online play authentication/room support. Browser-only local stats don't sync between devices.
 
 ECHOBOUND is a working rules prototype, not a claim of patentable or unprecedented mechanics. Card values, rounds, and difficulty should be playtested and balanced before public launch.
+
+## Clearer on-screen explanation
+
+The interface now displays the win condition, a worked 5 Power / 3 Echo example, a step-by-step move prompt, a score preview, and a round recap distinguishing points scored immediately from Echo points awarded from the prior round. All card values and win rules are unchanged. The three vault labels are simplified to Ember / Tide / Veil, with the same +2 matching-symbol bonus.
