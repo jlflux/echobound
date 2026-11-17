@@ -189,10 +189,10 @@
     if (!overlay) { $('modal').innerHTML = ''; return; }
     const modal = $('modal');
     if (overlay === 'intro' || overlay === 'rules') {
-      modal.innerHTML = `<div class="modal-eyebrow">ECHOBOUND IN 30 SECONDS</div><h2>Win <em>two of three</em> vaults.</h2>
-        <p>Each player secretly plays one card into one vault per round. Scores build up for eight rounds. Win more vaults than your opponent.</p>
+      modal.innerHTML = `<div class="modal-eyebrow">ECHOBOUND IN 30 SECONDS</div><h2>Control <em>more vaults</em>.</h2>
+        <p>Each player secretly plays one card into one vault per round. Scores build up for eight rounds. Win more vaults than your opponent. If vaults controlled are tied, total Power decides.</p>
         <div class="worked-example"><div class="example-title">EXAMPLE — YOU PLAY A CARD WITH 5 POWER + 3 ECHO</div><p><strong>RIGHT NOW:</strong> You get <b>+5 points</b> in the vault you chose.</p><p><strong>NEXT ROUND:</strong> If your rival plays in that same vault, <b>they steal your +3 Echo.</b> If they play elsewhere, <b>you keep the +3.</b></p></div>
-        <div class="simple-steps"><p><b>1.</b> Click a card in your hand (big number = Power, small number = Echo).</p><p><b>2.</b> Click one of the three vaults. A matching symbol gives +2 Power immediately.</p><p><b>3.</b> Click Play Card. Both players' moves and points are revealed.</p><p class="advanced-note"><b>Optional:</b> Charge gives up 2 Power now to add 2 Echo later. The Echo from the final round does not score.</p></div>
+        <div class="simple-steps"><p><b>1.</b> Click a card in your hand (big number = Power, small number = Echo).</p><p><b>2.</b> Click one of the three vaults. A matching symbol gives +2 Power immediately.</p><p><b>3.</b> Click Play Card. Both players' moves and points are revealed.</p><p class="advanced-note"><b>Optional:</b> Charge gives up to 2 Power now to add 2 Echo later. The Echo from the final round does not score.</p></div>
         <button id="modalPrimary" class="modal-action" type="button">${overlay === 'intro' ? 'ENTER THE CONTEST' : 'BACK TO THE GAME'}</button>`;
       $('modalPrimary').addEventListener('click', overlay === 'intro' ? closeIntro : dismissRules);
     } else if (overlay === 'pass') {
@@ -210,7 +210,8 @@
     } else if (overlay === 'finished') {
       const result = game.winner;
       const won = result.winner === null ? 'STALEMATE' : result.winner === 0 ? (game.mode === 'ai' ? 'VICTORY' : 'PLAYER ONE WINS') : (game.mode === 'ai' ? 'DEFEAT' : 'PLAYER TWO WINS');
-      const desc = result.winner === null ? 'You tied on vaults controlled and total Power.' : result.winner === 0 ? 'You controlled more vaults at the end of eight rounds.' : 'The rival controlled more vaults at the end of eight rounds.';
+      const tiedVaults = result.crowns[0] === result.crowns[1];
+      const desc = result.winner === null ? 'Both players tied on vaults controlled and total Power.' : result.winner === 0 ? (tiedVaults ? 'You won the total-Power tiebreaker after tying on vaults.' : 'You controlled more vaults after eight rounds.') : (tiedVaults ? 'The rival won the total-Power tiebreaker after tying on vaults.' : 'The rival controlled more vaults after eight rounds.');
       const gained = result.winner === 0 ? 100 : result.winner === 1 ? 35 : 60;
       modal.innerHTML = `<div class="modal-eyebrow">FINAL SCORES · 08 / 08 ROUNDS</div><div class="result-display"><div class="result-symbol">${result.winner === 0 ? '✦' : result.winner === 1 ? '◈' : '✧'}</div><h2>${won}</h2><p>${game.mode === 'local' ? 'The last Echo has faded. The vaults have made their choice.' : desc}</p></div>
         <div class="final-tallies">${C.VAULTS.map((v,i) => { const s=game.vaults[i].score; const leader=s[0]===s[1] ? 'TIED' : s[0]>s[1] ? 'P1 CLAIMS' : 'P2 CLAIMS'; return `<div class="final-tally"><div class="final-title">${v.name.toUpperCase()}</div><div class="final-score">${s[0]} <span style="font-size:12px;color:#8b9db5">:</span> ${s[1]}</div><div class="final-winner">${leader}</div></div>`; }).join('')}</div>
